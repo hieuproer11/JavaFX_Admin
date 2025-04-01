@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fsiAdministration.controllers.AccueilController">
+   <children>
+      <VBox layoutX="-1.0" prefHeight="48.0" prefWidth="729.0">
+         <children>
+            <MenuBar prefHeight="26.0" prefWidth="711.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Gestion étudiant">
+                  <items>
+                        <MenuItem fx:id="bListeEtud" mnemonicParsing="false" onAction="#bListEtudClick" text="liste étudiant" />
+                        <MenuItem fx:id="bAjouterEtud" mnemonicParsing="false" onAction="#bAjouterEtudClick" text="ajouter un étudiant" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Gestion section">
+                  <items>
+                    <MenuItem fx:id="bListeSection" mnemonicParsing="false" onAction="#bListeSectionClick" text="Liste des sections" />
+                        <MenuItem fx:id="bAjouterSection" mnemonicParsing="false" onAction="#bAjouterSectionClick" text="ajouter une section" />
+                  </items>
+                </Menu>
+                  <Menu fx:id="bAutres" mnemonicParsing="false" text="Autres">
+                     <items>
+                        <MenuItem fx:id="bAccueil" mnemonicParsing="false" onAction="#bAccueilClick" text="Accueil" />
+                        <MenuItem fx:id="bQuitter" mnemonicParsing="false" onAction="#bQuitterClick" text="Quitter" />
+                     </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </VBox>
+      <Label alignment="TOP_CENTER" layoutY="151.0" prefHeight="40.0" prefWidth="729.0" text="BIENVENUE" textFill="#024010">
+         <font>
+            <Font name="Bell MT Bold" size="22.0" />
+         </font>
+      </Label>
+      <Label alignment="TOP_CENTER" layoutY="230.0" prefHeight="40.0" prefWidth="729.0" text="dans l'application de gestion administratif FSI" textFill="#ea1a9d">
+         <font>
+            <Font name="Bell MT Bold" size="22.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

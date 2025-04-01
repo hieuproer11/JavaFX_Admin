@@ -1,0 +1,21 @@
+1 Bouton connexion fait retour le login dans le log.
+2 Le champ mot de passe n'est pas cache. 
+3 Il manque un BDDmanager pour se connecter avec la base de donnees.
+4 la methode find() de utilisateur DAO : le parametre mdp retourne une valeur statique "mgo".
+5 Le Bouton connecter lance l'accueil meme si il n'y a pas de champs rempli.
+6 La methode create() de EtudiantDAO() a deux catch(ClassNotFoundException e)
+7 Pour l'enregistrement d'un etudiant, bouton enregistrer a un typo : "enregistrerr".
+8 Le bouton Enregistrer ne marche pas.
+9 Le bouton Retour ne marche pas non plus.
+10 Le bouton "Effacer" retourne a l'accueil au lieu du bouton "Retour"
+11 Le bouton "Effacer" se met dans la mauvaise endroit : plutôt se presenter dans la listeEtudiants ou il possede sa vraie page que dans page L'Ajout .
+12 La meme probleme avec bouton Effacer, donc "Efface".
+13 Le page ListEtudiant ne montre pas.
+14 Les autres pages semblent chevaucher celle de l'Accueil.
+15 la listing des sections se presente comme section 1 et 2 que sa libelle.
+16 Page ListeEtudiant manque des donnees affichage comme(Date de naissance et section) 
+17 La taille des trois boutons ne sont pas equilibres dans la Page d'AjoutEtudiant.
+18 Il y a faute de typo des libelles du colonne "nomEtuUd" et "puff etudiant".
+19 Au menu dans Autres, le choix Accueil ne marche pas.
+20 A chaque fois qu'on ouvre un nouvel page, le page precedent n'arrete pas mais persister au fond.
+
