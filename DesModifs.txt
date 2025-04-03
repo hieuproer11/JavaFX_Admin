@@ -1,0 +1,4 @@
+- Ajouter methode de l'authentification pour le bouton bConnexionClick dans
+ConnexionController.
+- Masquer le mdp quand on fait entrer le mdp
+- Modifier le menu pour que  la scene ancien roule pas en arriere plan des qu'on ouvre un nouveau. 

@@ -19,3 +19,6 @@
 19 Au menu dans Autres, le choix Accueil ne marche pas.
 20 A chaque fois qu'on ouvre un nouvel page, le page precedent n'arrete pas mais persister au fond.
 
+
+
+

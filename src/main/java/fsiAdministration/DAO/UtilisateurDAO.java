@@ -36,22 +36,23 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
     public BDDManager db;
 
     public Utilisateur find(String login, String password) {
-        Utilisateur user = new Utilisateur();
+        Utilisateur user = null;
 
         try {
             Class.forName("org.postgresql.Driver");
             String sql = "SELECT * FROM utilisateur WHERE loginUtilisateur =? and mdpUtilisateur=?";
+            db = new BDDManager();
             Connection connect = db.getConnection();
             PreparedStatement ps = connect.prepareStatement(sql);
 
             ps.setString(1, login);
-            ps.setString(2, "mgo");
+            ps.setString(2, password);
             ResultSet result = ps.executeQuery();
             if(result.next()) {
                 user = new Utilisateur(
                         result.getInt("idutilisateur"),
                         result.getString("loginutilisateur"),
-                        result.getString("loginutilisateur"));
+                        result.getString("mdputilisateur"));
             }
 
         } catch (SQLException e) {
