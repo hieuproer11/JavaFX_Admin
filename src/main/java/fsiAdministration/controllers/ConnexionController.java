@@ -56,7 +56,7 @@ public class ConnexionController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erreur de connexion");
             alert.setHeaderText(null);
-            alert.setContentText("Utilisateur n'est pas trouve ou Login ou Mot de passe incorrect.");
+            alert.setContentText("Login ou Mot de passe incorrect.");
             alert.showAndWait();
         } else {
             showAccueil();

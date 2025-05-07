@@ -41,7 +41,7 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
         try {
             Class.forName("org.postgresql.Driver");
             String sql = "SELECT * FROM utilisateur WHERE loginUtilisateur =? and mdpUtilisateur=?";
-            db = new BDDManager();
+            db = new BDDManager(    );
             Connection connect = db.getConnection();
             PreparedStatement ps = connect.prepareStatement(sql);
 

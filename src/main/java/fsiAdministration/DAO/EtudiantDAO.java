@@ -1,7 +1,7 @@
 package fsiAdministration.DAO;
 
 import fsiAdministration.BO.Etudiant;
-import fsiAdministration.BO.Utilisateur;
+import fsiAdministration.BO.Section;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -30,7 +30,6 @@ public class EtudiantDAO extends DAO<Etudiant>{
             if (rowsInserer > 0) {
                 controle= true;
             }
-
         }
         catch(SQLException e){
             e.printStackTrace();
@@ -43,7 +42,6 @@ public class EtudiantDAO extends DAO<Etudiant>{
 
     public int lastId(){
         int controle = 1;
-
         try {
             Class.forName("org.postgresql.Driver");
             Connection connect = db.getConnection();
@@ -78,32 +76,37 @@ public class EtudiantDAO extends DAO<Etudiant>{
     }
 
     @Override
-    public List findAll() {
+    public List<Etudiant> findAll() {
         List<Etudiant> mesEtud = new ArrayList<>();
-        Etudiant etud;
-
         try {
-            Class.forName("org.postgresql.Driver");
             Connection connect = db.getConnection();
-
-            String sql = "SELECT * FROM etudiant";
+            String sql = "SELECT e.idEtudiant, e.nomEtudiant, e.prenomEtudiant, e.idSection, s.libelleSection " +
+                         "FROM etudiant e " +
+                         "JOIN section s ON e.idSection = s.idSection";
             Statement ps = connect.createStatement();
             ResultSet rs = ps.executeQuery(sql);
+
             while(rs.next()) {
-                etud = new Etudiant(
+                Section section = new Section(
+                        rs.getInt("idSection"),
+                        rs.getString("libelleSection")
+                );
+
+                Etudiant etud = new Etudiant(
                         rs.getInt("idEtudiant"),
-                        rs.getString ("nomEtudiant"),
-                        rs.getString("prenomEtudiant")
-                        );
+                        rs.getString("nomEtudiant"),
+                        rs.getString("prenomEtudiant"),
+                        section
+                );
+
                 mesEtud.add(etud);
             }
 
+
         } catch (SQLException e) {
-            return null;
-        }
-        catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return mesEtud;
     }
+
 }

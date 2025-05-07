@@ -40,10 +40,6 @@ public class MenuController {
             currentStage.setScene(new Scene(root));
             currentStage.setTitle("Accueil FSI ADMINISTRATION");
 
-
-            // Configurer la fenêtre en tant que modal
-            currentStage.initModality(Modality.APPLICATION_MODAL);
-
             // Afficher la fenêtre et attendre qu'elle se ferme
             currentStage.show();
 
@@ -71,9 +67,6 @@ public class MenuController {
             currentStage.setScene(new Scene(root));
             currentStage.setTitle("Liste etudiant");
 
-            // Configurer la fenêtre en tant que modal
-            currentStage.initModality(Modality.APPLICATION_MODAL);
-
             // Afficher la fenêtre et attendre qu'elle se ferme
             currentStage.show();
 
@@ -99,8 +92,6 @@ public class MenuController {
             currentStage.setTitle("Accueil FSI ADMINISTRATION");
             currentStage.setScene(new Scene(root));
 
-            // Configurer la fenêtre en tant que modal
-            currentStage.initModality(Modality.APPLICATION_MODAL);
 
             // Afficher la fenêtre et attendre qu'elle se ferme
             currentStage.show();

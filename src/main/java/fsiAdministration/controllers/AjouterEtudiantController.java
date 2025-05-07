@@ -1,6 +1,7 @@
 package fsiAdministration.controllers;
 
 import fsiAdministration.BO.Etudiant;
+import fsiAdministration.BO.Section;
 import fsiAdministration.DAO.EtudiantDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -26,36 +27,44 @@ public class AjouterEtudiantController extends MenuController implements Initial
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ObservableList<String> section = FXCollections.observableArrayList("section 1", "section 2");
+        ObservableList<String> section = FXCollections.observableArrayList("Licence developpeur et infrastructure", "Management de projet");
         lvSectionEtud.setItems(section);
     }
 
     @FXML
-    public void bRetourClick(ActionEvent event) {
+    public void bEnregistrerClick(ActionEvent event) {
         String x = tfNomEtud.getText();
         String y = tfPrenomEtud.getText();
-        int z = 1;
+        Section section;
+        if (lvSectionEtud.getSelectionModel().getSelectedItem().equals("Licence développeur et infrastructure")) {
+            section = new Section(1, "Licence développeur et infrastructure");
+        } else if (lvSectionEtud.getSelectionModel().getSelectedItem().equals("Management de projet")) {
+            section = new Section(2, "Management de projet");
+        } else {
+            System.out.println("Veuillez sélectionner une section.");
+            return;
+        }
 
-        Etudiant newEtud = new Etudiant(0,x,y);
-        newEtud.setIdSection(z);
+        Etudiant newEtud = new Etudiant(0, x, y, section);
 
-        System.out.println(newEtud);
+
         EtudiantDAO etudDAO = new EtudiantDAO();
         boolean controle = etudDAO.create(newEtud);
-        System.out.println(controle);
+
+        if (controle) {
+            System.out.println("L'étudiant a été ajouté avec succès !");
+            tfNomEtud.clear();
+            tfPrenomEtud.clear();
+        } else {
+            System.out.println("Échec de l'ajout de l'étudiant.");
+        }
+
     }
 
     @FXML
-    public void bEnregistrerClick(ActionEvent event) {
-        tfNomEtud.clear();
-        tfPrenomEtud.clear();
-    }
-
-    @FXML
-    public void bEffacerClick(ActionEvent event) {
-        // On fait le lien avec l'ecran actuelle
+    public void bRetourClick(ActionEvent event) {
         Stage stageP = (Stage) bRetour.getScene().getWindow();
-        //on ferme l'écran
         stageP.close();
     }
+
 }

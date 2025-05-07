@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fsiAdministration.controllers.ListeEtudiantController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fsiAdministration.controllers.ListeEtudiantController">
     <children>
         <VBox layoutX="-1.0" prefHeight="478.0" prefWidth="729.0">
 
@@ -36,8 +31,9 @@
                 </MenuBar>
                 <TableView fx:id="tvEtudiants" prefHeight="259.0" prefWidth="730.0">
                     <columns>
-                        <TableColumn fx:id="tcNomEtud" prefWidth="143.1999877691269" text="nomEtUd" />
-                        <TableColumn fx:id="tcPrenomEtud" prefWidth="147.99993896484375" text="pufff etudiant" />
+                        <TableColumn fx:id="tcNomEtud" prefWidth="143.1999877691269" text="Nom Étudiant" />
+                        <TableColumn fx:id="tcPrenomEtud" prefWidth="147.99993896484375" text="Prénom Étudiant" />
+                        <TableColumn fx:id="tcLibelleSection" prefWidth="220" text="Section"/>
                     </columns>
                 </TableView>
 

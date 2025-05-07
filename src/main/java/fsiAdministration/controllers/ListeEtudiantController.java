@@ -1,6 +1,7 @@
 package fsiAdministration.controllers;
 
 import fsiAdministration.BO.Etudiant;
+import fsiAdministration.BO.Section;
 import fsiAdministration.DAO.EtudiantDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,33 +22,27 @@ public class ListeEtudiantController extends MenuController implements Initializ
 
     @FXML
     private TableColumn<Etudiant, String> tcPrenomEtud;
+
+    @FXML
+    private TableColumn<Etudiant, String> tcLibelleSection;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        if (tvEtudiants.getItems().isEmpty()) { // Assure-toi de ne charger qu'une fois
+            EtudiantDAO etudDAO = new EtudiantDAO();
+            List<Etudiant> mesEtud = etudDAO.findAll();
+            ObservableList<Etudiant> mesEtudOL = FXCollections.observableArrayList(mesEtud);
+
+            // Configuration des colonnes de la TableView
+            tcNomEtud.setCellValueFactory(cellData -> cellData.getValue().nomEtudiantProperty());
+            tcPrenomEtud.setCellValueFactory(cellData -> cellData.getValue().prenomEtudiantProperty());
+            tcLibelleSection.setCellValueFactory(cellData -> cellData.getValue().getSection().libelleSectionProperty());
 
 
-        EtudiantDAO etudDAO = new EtudiantDAO();
-        List<Etudiant> mesEtud = etudDAO.findAll();
-        ObservableList<Etudiant> mesEtudOL= FXCollections.observableArrayList(mesEtud);
-        tcNomEtud.setCellValueFactory(cellData -> cellData.getValue().nomEtudiantProperty());
-        tcPrenomEtud.setCellValueFactory(cellData -> cellData.getValue().prenomEtudiantProperty());
-
-        tvEtudiants.setItems(mesEtudOL);
-
-
-
+            // Affecter les données à la TableView UNE SEULE FOIS
+            tvEtudiants.setItems(mesEtudOL);
+        }
     }
 
-/*       tcNomEtud.setCellValueFactory(new PropertyValueFactory<>("nomEtudiant"));
-        tcPrenomEtud.setCellValueFactory(new PropertyValueFactory<>("prenomEtudiant"));
-    ObservableList<Etudiant> data = getUserList();
-        tvEtudiants.setItems(data);
-    private ObservableList<Etudiant> getUserList() {
-
-        Etudiant etud1 = new Etudiant(1,"Goudet","Magali");
-
-        ObservableList<Etudiant> list = FXCollections.observableArrayList(etud1);
-        return list;
-    }*/
 
 
 

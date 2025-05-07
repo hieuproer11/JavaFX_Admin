@@ -2,3 +2,9 @@
 ConnexionController.
 - Masquer le mdp quand on fait entrer le mdp
 - Modifier le menu pour que  la scene ancien roule pas en arriere plan des qu'on ouvre un nouveau. 
+- Ajout de la classe Section
+- Modification du page_liste_etudiant pour ajouter le colonne section
+- Modification de la classe Etudiant en ajoutant section.
+- Modification de la methode findAll(Etudiant) dans EtudiantDAO pour recuperer le libelle section correspond avec l'etudiant
+- 
+- Modification de ListeEtudiantController pour 
