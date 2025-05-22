@@ -6,34 +6,37 @@ import java.sql.SQLException;
 
 public class BDDManager {
 
-    private static final String URL = "jdbc:postgresql://localhost:5433/FSI_admin";
+    private static final String URL  = "jdbc:postgresql://localhost:5433/FSI_admin";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "080600";
-    private static Connection connection = null;
+    private static final String PASS = "080600";
 
-    // Établir une connexion à la BDD
-    public static Connection getConnection() {
-        if (connection == null) {
-            try {
-                connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                System.out.println("Connexion établie avec succès!");
-            } catch (SQLException e) {
-                System.err.println("Erreur lors de la connexion à la base de données : " + e.getMessage());
+    /* Connexion unique partagée */
+    private static Connection connection;
+
+    public static synchronized Connection getConnection() throws SQLException {
+
+        try {
+            if (connection == null || connection.isClosed()) {
+                connection = DriverManager.getConnection(URL, USER, PASS);
+                System.out.println("Connexion (re)établie !");
             }
+        } catch (SQLException e) {
+            System.err.println("Connexion impossible : " + e.getMessage());
+            throw e;
         }
         return connection;
     }
 
-    // Fermer la connexion
-    public static void closeConnection() {
+    /*À appeler UNE SEULE FOIS à la sortie de l’appli */
+    public static synchronized void closeConnection() {
         if (connection != null) {
             try {
                 connection.close();
-                connection = null;
-                System.out.println("Connexion fermée avec succès!");
+                System.out.println("Connexion fermée.");
             } catch (SQLException e) {
-                System.err.println("Erreur lors de la fermeture de la connexion : " + e.getMessage());
+                System.err.println("Erreur fermeture connexion : " + e.getMessage());
             }
+            connection = null;
         }
     }
 }

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+
+
+<Pane prefWidth="729.0" prefHeight="478.0"
+      xmlns="http://javafx.com/javafx/17.0.2" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="fsiAdministration.controllers.AjouterCoursController">
+
+    <children>
+        <VBox prefWidth="729.0" layoutX="-1.0">
+            <children>
+                <MenuBar prefWidth="711.0" prefHeight="26.0">
+                    <menus>
+                        <Menu text="Gestion étudiant">
+                            <items>
+                                <MenuItem fx:id="bListeEtud"    text="liste étudiant"     onAction="#bListEtudClick"/>
+                                <MenuItem fx:id="bAjouterEtud"   text="ajouter un étudiant" onAction="#bAjouterEtudClick"/>
+                            </items>
+                        </Menu>
+                        <Menu text="Gestion section">
+                            <items>
+                                <MenuItem fx:id="bListeSection" text="Liste des sections" onAction="#bListeSectionClick"/>
+                                <MenuItem fx:id="bAjouterSection" text="ajouter une section" onAction="#bAjouterSectionClick"/>
+                            </items>
+                        </Menu>
+                        <Menu text="Gestion cours">
+                            <items>
+                                <MenuItem fx:id="bListeCours"  text="Liste des cours"  onAction="#bListeCoursClick"/>
+                                <MenuItem fx:id="bAjouterCours" text="ajouter un cours" onAction="#bAjouterCoursClick"/>
+                            </items>
+                        </Menu>
+                        <Menu text="Autres" fx:id="bAutres">
+                            <items>
+                                <MenuItem fx:id="bAccueil" text="Accueil" onAction="#bAccueilClick"/>
+                                <MenuItem fx:id="bQuitter" text="Quitter" onAction="#bQuitterClick"/>
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+        </VBox>
+
+
+        <VBox layoutX="-1.0" layoutY="54.0" prefWidth="729.0" spacing="15" alignment="TOP_CENTER">
+            <children>
+                <Label text="AJOUT D'UN COURS" textFill="#024010" alignment="CENTER" contentDisplay="CENTER">
+                    <font><Font name="System Bold" size="24.0"/></font>
+                </Label>
+
+                <!-- Libellé -->
+                <HBox spacing="10" alignment="CENTER_LEFT" prefWidth="600">
+                    <Label text="Libellé cours" textFill="#024010">
+                        <font><Font name="System Bold" size="14.0"/></font>
+                    </Label>
+                    <TextField fx:id="tfLibelle" prefWidth="350"/>
+                </HBox>
+
+                <!-- Description -->
+                <HBox spacing="10" alignment="CENTER_LEFT" prefWidth="600">
+                    <Label text="Description" textFill="#024010">
+                        <font><Font name="System Bold" size="14.0"/></font>
+                    </Label>
+                    <TextField fx:id="tfDescription" prefWidth="350"/>
+                </HBox>
+
+                <!-- Section -->
+                <HBox spacing="10" alignment="CENTER_LEFT" prefWidth="600">
+                    <Label text="Section" textFill="#024010">
+                        <font><Font name="System Bold" size="14.0"/></font>
+                    </Label>
+                    <ComboBox fx:id="cbSection" prefWidth="250"/>
+                </HBox>
+            </children>
+        </VBox>
+
+        <!-- ===================== BOUTONS ============================= -->
+        <HBox layoutY="370" prefWidth="729.0" alignment="CENTER">
+            <children>
+                <Button fx:id="bEnregistrer" text="ENREGISTRER" textFill="#024010"
+                        onAction="#bEnregistrerClick" prefWidth="160" prefHeight="40">
+                    <font><Font name="System Bold" size="18"/></font>
+                </Button>
+                <Button fx:id="bRetour" text="RETOUR" textFill="#024010"
+                        onAction="#bRetourClick" prefWidth="160" prefHeight="40">
+                    <font><Font name="System Bold" size="18"/></font>
+                    <HBox.margin><Insets left="50"/></HBox.margin>
+                </Button>
+            </children>
+        </HBox>
+    </children>
+</Pane>

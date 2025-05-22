@@ -23,6 +23,12 @@
                         <MenuItem fx:id="bAjouterSection" mnemonicParsing="false" onAction="#bAjouterSectionClick" text="ajouter une section" />
                   </items>
                 </Menu>
+                 <Menu mnemonicParsing="false" text="Gestion cours">
+                    <items>
+                       <MenuItem fx:id="bListeCours" mnemonicParsing="false" onAction="#bListeCoursClick" text="Liste des cours" />
+                       <MenuItem fx:id="bAjouterCours" mnemonicParsing="false" onAction="#bAjouterCoursClick" text="ajouter un cours" />
+                    </items>
+                 </Menu>
                   <Menu fx:id="bAutres" mnemonicParsing="false" text="Autres">
                      <items>
                         <MenuItem fx:id="bAccueil" mnemonicParsing="false" onAction="#bAccueilClick" text="Accueil" />
@@ -35,7 +41,7 @@
       </VBox>
       <VBox layoutX="-1.0" layoutY="54.0" prefHeight="200.0" prefWidth="729.0">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="730.0" text="AJOUT D'UN NOUVEL ETUDIANT" textAlignment="CENTER" textFill="#024010">
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="730.0" text="AJOUT D'UN NOUVEL ETUDIANT" textAlignment="CENTER" textFill="#024010">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -57,17 +63,23 @@
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="tfPrenomEtud" prefHeight="25.0" prefWidth="377.0" />
+                  <TextField fx:id="tfPrenomEtud" prefHeight="26.0" prefWidth="205.0" />
+               </children>
+            </HBox>
+            <HBox fx:id="hbDateNaiss" prefHeight="44.0" prefWidth="729.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="165.0" text="Date de naissance" textFill="#024010">
+                     <font><Font name="System Bold" size="14.0" /></font>
+                  </Label>
+                  <DatePicker fx:id="dpDateNaiss" prefHeight="26.0" prefWidth="206.0" />
                </children>
             </HBox>
             <HBox fx:id="hbSectionEtudiant" prefHeight="44.0" prefWidth="729.0">
                <children>
                   <Label prefHeight="17.0" prefWidth="165.0" text="Section étudiant" textFill="#024010">
-                     <font>
-                        <Font name="System Bold" size="14.0" />
-                     </font>
+                     <font><Font name="System Bold" size="14.0" /></font>
                   </Label>
-                  <ListView fx:id="lvSectionEtud" prefHeight="44.0" prefWidth="307.0" />
+                  <ComboBox fx:id="cbSection" prefWidth="307.0" />
                </children>
             </HBox>
          </children>

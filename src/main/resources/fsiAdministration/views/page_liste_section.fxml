@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="729.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fsiAdministration.controllers.ListeSectionController">
+    <children>
+        <VBox layoutX="-1.0" prefHeight="478.0" prefWidth="729.0">
+
+            <MenuBar prefHeight="26.0" prefWidth="711.0">
+                <menus>
+                    <Menu fx:id="gestionEtud" mnemonicParsing="false" text="Gestion étudiant">
+                        <items>
+                            <MenuItem fx:id="bListeEtud" mnemonicParsing="false" onAction="#bListEtudClick" text="liste étudiant" />
+                            <MenuItem fx:id="bAjouterEtud" mnemonicParsing="false" onAction="#bAjouterEtudClick" text="ajouter un étudiant" />
+                        </items>
+                    </Menu>
+                    <Menu fx:id="gestionSection" mnemonicParsing="false" text="Gestion section">
+                        <items>
+                            <MenuItem fx:id="bListeSection" mnemonicParsing="false" onAction="#bListeSectionClick" text="Liste des sections" />
+                            <MenuItem fx:id="bAjouterSection" mnemonicParsing="false" onAction="#bAjouterSectionClick" text="ajouter une section" />
+                        </items>
+                    </Menu>
+                    <Menu mnemonicParsing="false" text="Gestion cours">
+                        <items>
+                            <MenuItem fx:id="bListeCours" mnemonicParsing="false" onAction="#bListeCoursClick" text="Liste des cours" />
+                            <MenuItem fx:id="bAjouterCours" mnemonicParsing="false" onAction="#bAjouterCoursClick" text="ajouter un cours" />
+                        </items>
+                    </Menu>
+                    <Menu fx:id="bAutres" mnemonicParsing="false" text="Autres">
+                        <items>
+                            <MenuItem fx:id="bAccueil" mnemonicParsing="false" onAction="#bAccueilClick" text="Accueil" />
+                            <MenuItem fx:id="bQuitter" mnemonicParsing="false" onAction="#bQuitterClick" text="Quitter" />
+                        </items>
+                    </Menu>
+                </menus>
+            </MenuBar>
+            <TableView fx:id="tvSections" prefHeight="259.0" prefWidth="730.0">
+                <columns>
+                    <TableColumn fx:id="tcIdSection" prefWidth="143.1999877691269" text="ID" />
+                    <TableColumn fx:id="tcLibelleSection" prefWidth="220" text="Section" />
+                    <TableColumn fx:id="tcNbEtudiants" prefWidth="130" text="Nbre étudiants" />
+                    <TableColumn fx:id="tcModifier" prefWidth="80" text="Modifier" />
+                    <TableColumn fx:id="tcSupprimer" prefWidth="80" text="Supprimer" />
+                    <TableColumn fx:id="tcConsulter" prefWidth="100" text="Voir" />
+                </columns>
+            </TableView>
+
+        </VBox>
+    </children>
+</Pane>

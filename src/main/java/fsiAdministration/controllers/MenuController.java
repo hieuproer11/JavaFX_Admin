@@ -18,7 +18,7 @@ public class MenuController {
 
 
     @FXML
-    protected MenuItem bListeEtud, bAjouterEtud, bListeSection, bAjouterSection, bQuitter, bAccueil;
+    protected MenuItem bListeEtud, bAjouterEtud, bListeSection, bAjouterSection, bListeCours, bAjouterCours, bQuitter, bAccueil;
 
 
 
@@ -89,7 +89,7 @@ public class MenuController {
             AjouterEtudiantController ajouterEtudiantController = fxmlLoader.getController();
 
             // Remplacer la scène actuelle par la nouvelle
-            currentStage.setTitle("Accueil FSI ADMINISTRATION");
+            currentStage.setTitle("Ajouter un Etudiant");
             currentStage.setScene(new Scene(root));
 
 
@@ -108,7 +108,7 @@ public class MenuController {
         try {
 
             // Charger le fichier FXML
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_liste_etudiant.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_liste_section.fxml"));
             Parent root = fxmlLoader.load();
 
             // Récupère le Stage actuel depuis l'événement
@@ -116,14 +116,11 @@ public class MenuController {
 
 
             // Obtenir le contrôleur de la nouvelle fenetre
-            ListeEtudiantController abc = fxmlLoader.getController();
+            ListeSectionController lsc = fxmlLoader.getController();
 
             // Remplacer la scène actuelle par la nouvelle
-            currentStage.setTitle("Liste etudiant");
+            currentStage.setTitle("Liste section");
             currentStage.setScene(new Scene(root));
-
-            // Configurer la fenêtre en tant que modal
-           currentStage.initModality(Modality.APPLICATION_MODAL);
 
             // Afficher la fenêtre et attendre qu'elle se ferme
             currentStage.show();
@@ -135,5 +132,88 @@ public class MenuController {
     }
 
     @FXML
-    public void bAjouterSectionClick(ActionEvent event) {}
+    public void bAjouterSectionClick(ActionEvent event) {
+        try {
+            // Charger le fichier FXML
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_ajout_section.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Récupère le Stage actuel depuis l'événement
+            Stage currentStage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+
+
+            // Obtenir le contrôleur de la nouvelle fenetre
+            AjouterSectionController asc = fxmlLoader.getController();
+
+            // Remplacer la scène actuelle par la nouvelle
+            currentStage.setTitle("Ajouter une section");
+            currentStage.setScene(new Scene(root));
+
+
+            // Afficher la fenêtre et attendre qu'elle se ferme
+            currentStage.show();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @FXML
+    public void bListeCoursClick(ActionEvent event){
+        try {
+            // Charger le fichier FXML
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_liste_cours.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Récupère le Stage actuel depuis l'événement
+            Stage currentStage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+
+
+            // Obtenir le contrôleur de la nouvelle fenetre
+            ListeCoursController lcc = fxmlLoader.getController();
+
+            // Remplacer la scène actuelle par la nouvelle
+            currentStage.setTitle("Liste Cours");
+            currentStage.setScene(new Scene(root));
+
+
+            // Afficher la fenêtre et attendre qu'elle se ferme
+            currentStage.show();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void bAjouterCoursClick(ActionEvent event){
+        try {
+            // Charger le fichier FXML
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_ajout_cours.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Récupère le Stage actuel depuis l'événement
+            Stage currentStage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+
+
+            // Obtenir le contrôleur de la nouvelle fenetre
+            AjouterCoursController acc = fxmlLoader.getController();
+
+            // Remplacer la scène actuelle par la nouvelle
+            currentStage.setTitle("Ajouter un cours");
+            currentStage.setScene(new Scene(root));
+
+
+            // Afficher la fenêtre et attendre qu'elle se ferme
+            currentStage.show();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
