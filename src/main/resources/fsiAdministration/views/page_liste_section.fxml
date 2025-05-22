@@ -40,6 +40,7 @@
                     <TableColumn fx:id="tcIdSection" prefWidth="143.1999877691269" text="ID" />
                     <TableColumn fx:id="tcLibelleSection" prefWidth="220" text="Section" />
                     <TableColumn fx:id="tcNbEtudiants" prefWidth="130" text="Nbre étudiants" />
+                    <TableColumn fx:id="tcVoirCours" prefWidth="100" text="Cours"/>
                     <TableColumn fx:id="tcModifier" prefWidth="80" text="Modifier" />
                     <TableColumn fx:id="tcSupprimer" prefWidth="80" text="Supprimer" />
                     <TableColumn fx:id="tcConsulter" prefWidth="100" text="Voir" />

@@ -1,7 +1,9 @@
 package fsiAdministration.controllers;
 
+import fsiAdministration.BO.Cours;
 import fsiAdministration.BO.Etudiant;
 import fsiAdministration.BO.Section;
+import fsiAdministration.DAO.CoursDAO;
 import fsiAdministration.DAO.EtudiantDAO;
 import fsiAdministration.DAO.SectionDAO;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -19,6 +21,7 @@ public class ListeSectionController extends MenuController implements Initializa
 
     /* ---------- FXML ---------- */
     @FXML private TableView<SectionRow>         tvSections;
+    @FXML private TableColumn<SectionRow, Void> tcVoirCours;
     @FXML private TableColumn<SectionRow,Integer> tcIdSection;
     @FXML private TableColumn<SectionRow,String>  tcLibelleSection;
     @FXML private TableColumn<SectionRow,Integer> tcNbEtudiants;
@@ -28,7 +31,7 @@ public class ListeSectionController extends MenuController implements Initializa
     private final SectionDAO  sectionDAO = new SectionDAO();
     private final EtudiantDAO etudDAO    = new EtudiantDAO();
     private final ObservableList<SectionRow> data = FXCollections.observableArrayList();
-
+    private final CoursDAO coursDAO = new CoursDAO();
     // -------------------------------------------------------------------------
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -105,9 +108,45 @@ public class ListeSectionController extends MenuController implements Initializa
             }
         });
 
+        /* -------- bouton VOIR COURS -------- */
+        tcVoirCours.setCellFactory(col -> new TableCell<>() {
+            private final Button btn = new Button("Voir Cours");
+            {
+                btn.setOnAction(e -> {
+                    SectionRow row = getTableView().getItems().get(getIndex());
+                    List<Cours> cours = coursDAO.findBySectionId(
+                            row.getSection().getIdSection());
+
+                    if (cours.isEmpty()) {
+                        new Alert(Alert.AlertType.INFORMATION,
+                                "Aucun cours pour cette section.").showAndWait();
+                        return;
+                    }
+
+                    StringBuilder sb = new StringBuilder();
+                    for (Cours c : cours) {
+                        sb.append(" ").append(c.getLibelleCours())
+                                .append(" -- ").append(c.getDescriptionCours())
+                                .append('\n');
+                    }
+
+                    Alert dlg = new Alert(Alert.AlertType.INFORMATION);
+                    dlg.setHeaderText("Cours de "
+                            + row.getSection().getLibelleSection() + "  ");
+                    dlg.setContentText(sb.toString());
+                    dlg.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
+                    dlg.showAndWait();
+                });
+            }
+            @Override protected void updateItem(Void it, boolean empty) {
+                super.updateItem(it, empty);
+                setGraphic(empty ? null : btn);
+            }
+        });
+
         /* -------- bouton CONSULTER ÉTUDIANTS -------- */
         tcConsulter.setCellFactory(col -> new TableCell<>() {
-            private final Button btn = new Button("Voir");
+            private final Button btn = new Button("Voir details");
             {
                 btn.setOnAction(e -> {
                     SectionRow row = getTableView().getItems().get(getIndex());
@@ -121,7 +160,7 @@ public class ListeSectionController extends MenuController implements Initializa
                                 .append("\n");
                     }
                     Alert dlg = new Alert(Alert.AlertType.INFORMATION);
-                    dlg.setHeaderText("Etudiants de « " + row.getSection().getLibelleSection() + " »");
+                    dlg.setHeaderText("Etudiants de  " + row.getSection().getLibelleSection() + " ");
                     dlg.setContentText(sb.length()==0 ?
                             "Aucun etudiant inscrit." : sb.toString());
                     dlg.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);

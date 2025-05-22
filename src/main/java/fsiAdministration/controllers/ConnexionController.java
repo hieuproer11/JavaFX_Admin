@@ -77,7 +77,7 @@ public class ConnexionController implements Initializable {
                 // Obtenir le contrôleur de la nouvelle fenetre
                 AccueilController accueilController = fxmlLoader.getController();
 
-                // Créer une nouvelle fenêtre (Stage)
+              // Créer une nouvelle fenêtre (Stage)
                 Stage stage = new Stage();
                 stage.setTitle("Accueil FSI ADMINISTRATION");
                 stage.setScene(new Scene(root));

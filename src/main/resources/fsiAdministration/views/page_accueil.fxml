@@ -38,15 +38,18 @@
             </MenuBar>
          </children>
       </VBox>
-      <Label alignment="TOP_CENTER" layoutY="151.0" prefHeight="40.0" prefWidth="729.0" text="BIENVENUE" textFill="#0aae30">
-         <font>
-            <Font name="Bell MT Bold" size="22.0" />
-         </font>
-      </Label>
+
+       <Label fx:id="lbBienvenue" alignment="TOP_CENTER" layoutY="151.0" prefHeight="40.0" prefWidth="729.0" text="BIENVENUE" textFill="#0aae30">
+           <font>
+               <Font name="Bell MT Bold" size="22.0" />
+           </font>
+       </Label>
+
       <Label alignment="TOP_CENTER" layoutY="230.0" prefHeight="40.0" prefWidth="729.0" text="dans l'application de gestion administratif FSI" textFill="#0aae30">
          <font>
             <Font name="Bell MT Bold" size="22.0" />
          </font>
       </Label>
+
    </children>
 </Pane>

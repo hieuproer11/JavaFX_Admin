@@ -1,33 +1,33 @@
 package fsiAdministration.controllers;
 
-import fsiAdministration.BO.Etudiant;
-import fsiAdministration.DAO.EtudiantDAO;
-import javafx.application.Platform;
-import javafx.event.ActionEvent;
+import fsiAdministration.BO.Utilisateur;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
+import javafx.scene.control.Label;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class AccueilController extends MenuController implements Initializable {
 
+    /* ---------- FXML ---------- */
+    @FXML private Label lbBienvenue;   // relie le Label du FXML
+    private Utilisateur util;
 
+    /** Appelé automatiquement après injection des champs FXML */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // si le nom d’utilisateur a déjà été passé, on l’affiche
+        if (util != null) mettreAJourTexte();
+    }
 
+    /* ---------- API publique ---------- */
+    /** Injecte le nom de l'utilisateur (depuis l'écran de login, par ex.) */
+
+
+    /* ---------- Utilitaire interne ---------- */
+    private void mettreAJourTexte() {
+        util = new Utilisateur();
+        lbBienvenue.setText("BIENVENUE " + util.getLoginUtilisateur().toUpperCase());
     }
 }
