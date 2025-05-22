@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.ResourceBundle;
@@ -36,7 +37,7 @@ public class ConnexionController implements Initializable {
     @FXML
     private Button bConnexion;
     @FXML
-    public void bConnexionClick(ActionEvent event) {
+    public void bConnexionClick(ActionEvent event) throws IOException {
         String login = tfLogin.getText();
         String mdp = tfMDP.getText();
 
@@ -59,39 +60,27 @@ public class ConnexionController implements Initializable {
             alert.setContentText("Login ou Mot de passe incorrect.");
             alert.showAndWait();
         } else {
-            showAccueil();
+            // Charger le fichier FXML pour la pop-up
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_accueil.fxml"));
+            Parent root = fxmlLoader.load();
+
+            // Obtenir le contrôleur de la nouvelle fenetre
+            AccueilController ac = fxmlLoader.getController();
+            ac.setUtilisateur(user);
+
+            // Créer une nouvelle fenêtre (Stage)
+            Stage stage = new Stage();
+            stage.setTitle("Accueil FSI ADMINISTRATION");
+            stage.setScene(new Scene(root));
+
+            // Configurer la fenêtre en tant que modal
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            // Afficher la fenêtre et attendre qu'elle se ferme
+            stage.show();
         }
 
     }
 
-    private void showAccueil(){
-         Stage stageP = (Stage) bConnexion.getScene().getWindow();
-         //on ferme l'écran
-          stageP.close();
-          try {
-
-                // Charger le fichier FXML pour la pop-up
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_accueil.fxml"));
-                Parent root = fxmlLoader.load();
-
-                // Obtenir le contrôleur de la nouvelle fenetre
-                AccueilController accueilController = fxmlLoader.getController();
-
-              // Créer une nouvelle fenêtre (Stage)
-                Stage stage = new Stage();
-                stage.setTitle("Accueil FSI ADMINISTRATION");
-                stage.setScene(new Scene(root));
-
-                // Configurer la fenêtre en tant que modal
-                stage.initModality(Modality.APPLICATION_MODAL);
-
-                // Afficher la fenêtre et attendre qu'elle se ferme
-                stage.show();
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-    }
 
 }

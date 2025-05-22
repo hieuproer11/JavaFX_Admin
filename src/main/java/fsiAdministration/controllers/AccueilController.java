@@ -10,24 +10,28 @@ import java.util.ResourceBundle;
 
 public class AccueilController extends MenuController implements Initializable {
 
-    /* ---------- FXML ---------- */
-    @FXML private Label lbBienvenue;   // relie le Label du FXML
-    private Utilisateur util;
+    @FXML private Label lbBienvenue;
 
-    /** Appelé automatiquement après injection des champs FXML */
+    private Utilisateur utilisateur;   // l’utilisateur connecté
+
+    /* --------------------- cycle de vie --------------------- */
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        // si le nom d’utilisateur a déjà été passé, on l’affiche
-        if (util != null) mettreAJourTexte();
+    public void initialize(URL url, ResourceBundle rb) {
+        // le contrôleur est instancié avant qu’on lui passe l’utilisateur ;
+        // on affiche donc le texte plus tard dans setUtilisateur(...)
     }
 
-    /* ---------- API publique ---------- */
-    /** Injecte le nom de l'utilisateur (depuis l'écran de login, par ex.) */
+    /* ------------------ injection depuis Login -------------- */
+    /** Appelée par le contrôleur de connexion après authentification */
+    public void setUtilisateur(Utilisateur u) {
+        this.utilisateur = u;
+        mettreAJourTexte();
+    }
 
-
-    /* ---------- Utilitaire interne ---------- */
+    /* ----------------------- affichage ---------------------- */
     private void mettreAJourTexte() {
-        util = new Utilisateur();
-        lbBienvenue.setText("BIENVENUE " + util.getLoginUtilisateur().toUpperCase());
+        if (utilisateur == null || lbBienvenue == null) return;
+        String login = utilisateur.getLoginUtilisateur();
+        lbBienvenue.setText("BIENVENUE " + login.toUpperCase());
     }
 }

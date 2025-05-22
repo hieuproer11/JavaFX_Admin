@@ -6,9 +6,9 @@ public class Utilisateur {
     private String loginUtilisateur;
     private String mdpUtilisateur;
 
-    public Utilisateur( int idUtilisateur,String mdpUtilisateur, String loginUtilisateur) {
-        this.mdpUtilisateur = mdpUtilisateur;
+    public Utilisateur( int idUtilisateur,String loginUtilisateur, String mdpUtilisateur) {
         this.loginUtilisateur = loginUtilisateur;
+        this.mdpUtilisateur = mdpUtilisateur;
         this.idUtilisateur = idUtilisateur;
     }
 
