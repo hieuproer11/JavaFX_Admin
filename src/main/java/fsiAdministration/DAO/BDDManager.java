@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class BDDManager {
 
-    private static final String URL  = "jdbc:postgresql://localhost:5433/FSI_admin";
+    private static final String URL  = "jdbc:postgresql://localhost:5432/FSI_API";
     private static final String USER = "postgres";
-    private static final String PASS = "080600";
+    private static final String PASS = "JAAJ69420";
 
     /* Connexion unique partagée */
     private static Connection connection;
