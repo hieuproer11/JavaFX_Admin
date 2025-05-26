@@ -84,9 +84,15 @@ public class AjouterCoursController extends MenuController implements Initializa
         }
     }
 
-    @FXML
-    private void bRetourClick(ActionEvent e) {
-        Stage st = (Stage) bRetour.getScene().getWindow();
-        st.close();
+    @FXML private void bRetourClick(ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/fsiAdministration/views/page_accueil.fxml"));
+            Stage  st   = (Stage) bRetour.getScene().getWindow();
+            st.setScene(new Scene(root));
+            st.setTitle("Accueil FSI ADMINISTRATION");
+        } catch (IOException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Impossible d'ouvrir la page d'accueil.").show();
+        }
     }
 }

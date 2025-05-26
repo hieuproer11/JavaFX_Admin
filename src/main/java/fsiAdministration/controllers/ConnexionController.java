@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -63,21 +64,18 @@ public class ConnexionController implements Initializable {
             // Charger le fichier FXML pour la pop-up
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fsiAdministration/views/page_accueil.fxml"));
             Parent root = fxmlLoader.load();
+            Stage currentStage = (Stage) bConnexion.getScene().getWindow();
 
             // Obtenir le contrôleur de la nouvelle fenetre
             AccueilController ac = fxmlLoader.getController();
             ac.setUtilisateur(user);
 
             // Créer une nouvelle fenêtre (Stage)
-            Stage stage = new Stage();
-            stage.setTitle("Accueil FSI ADMINISTRATION");
-            stage.setScene(new Scene(root));
-
-            // Configurer la fenêtre en tant que modal
-            stage.initModality(Modality.APPLICATION_MODAL);
+            currentStage.setScene(new Scene(root));
+            currentStage.setTitle("Accueil FSI ADMINISTRATION");
 
             // Afficher la fenêtre et attendre qu'elle se ferme
-            stage.show();
+            currentStage.show();
         }
 
     }
