@@ -53,11 +53,11 @@
                 <TableView fx:id="tvCours" prefHeight="330.0" prefWidth="730.0">
                     <columns>
                         <TableColumn fx:id="tcIdCours" prefWidth="70" text="ID" />
-                        <TableColumn fx:id="tcLibelleCours" prefWidth="180" text="Libellé" />
+                        <TableColumn fx:id="tcLibelleCours" text="Libellé" />
                         <TableColumn fx:id="tcDescription" prefWidth="220" text="Description" />
                         <TableColumn fx:id="tcLibelleSection" prefWidth="130" text="Section" />
-                        <TableColumn fx:id="tcModifier" prefWidth="65" text="Modifier" />
-                        <TableColumn fx:id="tcSupprimer" prefWidth="65" text="Supprimer" />
+                        <TableColumn fx:id="tcModifier" prefWidth="100.0" text="Modifier" />
+                        <TableColumn fx:id="tcSupprimer" prefWidth="100.0" text="Supprimer" />
                     </columns>
                 </TableView>
             </children>

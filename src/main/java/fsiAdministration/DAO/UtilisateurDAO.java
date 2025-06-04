@@ -5,7 +5,7 @@ import fsiAdministration.BO.Utilisateur;
 import java.sql.*;
 import java.util.List;
 
-public class UtilisateurDAO extends DAO<Utilisateur>{
+public class UtilisateurDAO extends DAO<Utilisateur> {
 
 
     @Override
@@ -35,7 +35,8 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
 
     public BDDManager db;
 
-    public Utilisateur find(String login, String password) {
+
+        public Utilisateur find (String login, String password) {
         Utilisateur user = null;
 
         try {
@@ -63,4 +64,6 @@ public class UtilisateurDAO extends DAO<Utilisateur>{
         }
         return user;
     }
+
 }
+
