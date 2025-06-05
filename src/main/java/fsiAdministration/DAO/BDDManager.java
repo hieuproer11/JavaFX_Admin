@@ -6,10 +6,13 @@ import java.sql.SQLException;
 
 public class BDDManager {
 
-    private static final String URL  = "jdbc:postgresql://localhost:5433/FSI_admin";
-    private static final String USER = "postgres";
-    private static final String PASS = "080600";
+    //private static final String URL  = "jdbc:postgresql://localhost:5433/FSI_admin";
+    //private static final String USER = "postgres";
+    //private static final String PASS = "080600";
 
+    private static final String URL  = "jdbc:postgresql://172.20.102.201:5432/P2025_FSI_G7";
+    private static final String USER = "groupe1";
+    private static final String PASS = "2SIO_ORT";
     /* Connexion unique partagée */
     private static Connection connection;
 
@@ -18,7 +21,7 @@ public class BDDManager {
         try {
             if (connection == null || connection.isClosed()) {
                 connection = DriverManager.getConnection(URL, USER, PASS);
-                System.out.println("Connexion (re)établie !");
+                System.out.println("Connexion établie !");
             }
         } catch (SQLException e) {
             System.err.println("Connexion impossible : " + e.getMessage());
