@@ -30,6 +30,11 @@ public class CoursDAO extends DAO<Cours> {
         return false;
     }
 
+    @Override
+    public boolean delete(Cours obj) {
+        return false;
+    }
+
     /*                               UPDATE                               */
     @Override
     public boolean update(Cours c) {
@@ -47,20 +52,31 @@ public class CoursDAO extends DAO<Cours> {
         } catch (SQLException ex) { ex.printStackTrace(); }
         return false;
     }
-
-    /*                               DELETE                               */
-    @Override
-    public boolean delete(Cours c) {
-        return deleteById(c.getIdCours());
-    }
-
     public boolean deleteById(int idCours) {
+        final String countSql =
+                "SELECT COUNT(*) " +
+                        "FROM etudiant e " +
+                        "JOIN cours c ON e.idSection = c.idSection " +
+                        "WHERE c.idCours = ?";
+        final String delSql = "DELETE FROM cours WHERE idCours = ?";
         try (Connection cnx = BDDManager.getConnection();
-             PreparedStatement ps = cnx.prepareStatement("DELETE FROM cours WHERE idCours = ?")) {
-            ps.setInt(1, idCours);
-            return ps.executeUpdate() == 1;
-        } catch (SQLException ex) { ex.printStackTrace(); }
-        return false;
+             PreparedStatement psCount = cnx.prepareStatement(countSql);
+             PreparedStatement psDel   = cnx.prepareStatement(delSql)) {
+            // 1) Vérification préventive
+            psCount.setInt(1, idCours);
+            try (ResultSet rs = psCount.executeQuery()) {
+                if (rs.next() && rs.getInt(1) > 0) {
+                    // Des étudiants sont rattachés à la même section : suppression interdite
+                    return false;
+                }
+            }
+            // 2) Suppression
+            psDel.setInt(1, idCours);
+            return psDel.executeUpdate() == 1;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     /*                                READ                                */

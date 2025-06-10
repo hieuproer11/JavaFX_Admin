@@ -79,7 +79,7 @@ public class AjouterEtudiantController extends MenuController implements Initial
         Etudiant etu = new Etudiant(0, nom, prenom, date, sec);
         boolean ok   = new EtudiantDAO().create(etu);
         show(ok ? Alert.AlertType.INFORMATION : Alert.AlertType.ERROR,
-                ok ? "L'étudiant a été ajouté avec succès !" : "Échec de l'ajout de l'étudiant.");
+                ok ? "L'étudiant a ete ajoute avec succes !" : "Echec de l'ajout de l'etudiant.");
 
         if (ok) clearForm();
     }

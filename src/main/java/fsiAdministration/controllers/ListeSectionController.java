@@ -89,24 +89,31 @@ public class ListeSectionController extends MenuController implements Initializa
             {
                 btn.setOnAction(e -> {
                     SectionRow row = getTableView().getItems().get(getIndex());
+                    if (row == null) return;
                     Alert conf = new Alert(Alert.AlertType.CONFIRMATION,
-                            "Supprimer la section ?", ButtonType.YES, ButtonType.NO);
+                            "Supprimer la section « " + row.getSection().getLibelleSection() + " ?",
+                            ButtonType.YES, ButtonType.NO);
                     conf.showAndWait().ifPresent(bt -> {
                         if (bt == ButtonType.YES) {
-                            if (sectionDAO.delete(row.getSection())) {
-                                data.remove(row);
+                            boolean ok = sectionDAO.deleteById(row.getSection().getIdSection());
+                            if (ok) {
+                                getTableView().getItems().remove(row);
                             } else {
-                                new Alert(Alert.AlertType.ERROR,"Echec suppression").showAndWait();
+                                new Alert(Alert.AlertType.ERROR,
+                                        "Impossible de supprimer : des etudiants sont rattaches a cette section.",
+                                        ButtonType.OK).showAndWait();
                             }
                         }
                     });
                 });
             }
-            @Override protected void updateItem(Void it, boolean empty) {
+            @Override
+            protected void updateItem(Void it, boolean empty) {
                 super.updateItem(it, empty);
                 setGraphic(empty ? null : btn);
             }
         });
+
 
         /* -------- bouton VOIR COURS -------- */
         tcVoirCours.setCellFactory(col -> new TableCell<>() {

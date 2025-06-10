@@ -82,11 +82,18 @@ public class ListeCoursController extends MenuController implements Initializabl
                     Cours c = getTableView().getItems().get(getIndex());
                     if (c == null) return;
                     Alert conf = new Alert(Alert.AlertType.CONFIRMATION,
-                            "Supprimer le cours  " + c.getLibelleCours() + "  ?",
+                            "Supprimer le cours « " + c.getLibelleCours() + "  ?",
                             ButtonType.YES, ButtonType.NO);
                     conf.showAndWait().ifPresent(b -> {
-                        if (b == ButtonType.YES && coursDAO.delete(c)) {
-                            data.remove(c);
+                        if (b == ButtonType.YES) {
+                            boolean ok = coursDAO.deleteById(c.getIdCours());
+                            if (ok) {
+                                getTableView().getItems().remove(c);
+                            } else {
+                                new Alert(Alert.AlertType.ERROR,
+                                        "Impossible de supprimer : des etudiants sont rattaches a ce cours.",
+                                        ButtonType.OK).showAndWait();
+                            }
                         }
                     });
                 });

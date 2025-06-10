@@ -6,13 +6,13 @@ import java.sql.SQLException;
 
 public class BDDManager {
 
-    //private static final String URL  = "jdbc:postgresql://localhost:5433/FSI_admin";
-    //private static final String USER = "postgres";
-    //private static final String PASS = "080600";
+    private static final String URL  = "jdbc:postgresql://localhost:5433/FSI_admin";
+    private static final String USER = "postgres";
+    private static final String PASS = "080600";
 
-    private static final String URL  = "jdbc:postgresql://172.20.102.201:5432/P2025_FSI_G7";
-    private static final String USER = "groupe1";
-    private static final String PASS = "2SIO_ORT";
+    //private static final String URL  = "jdbc:postgresql://172.20.102.201:5432/P2025_FSI_G7";
+    //private static final String USER = "groupe1";
+    //private static final String PASS = "2SIO_ORT";
     /* Connexion unique partagée */
     private static Connection connection;
 
